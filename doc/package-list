@@ -1,0 +1,5 @@
+com.vm.app.controller
+com.vm.app.dao
+com.vm.app.model
+com.vm.app.service
+com.vm.app.util

@@ -88,24 +88,32 @@ public class vmController {
         return "welcome";
     }
 
-
+    /**
+     * 
+     * @param model data
+     * @return String value mapping with uploader.jsp file in the views
+     * @see uploader page loads
+     */
     @RequestMapping(value = "/uploader", method = RequestMethod.GET)
     public String uploaderPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
         return "uploader";
     }
 
-    // Handling single file upload request
-
+    /**
+     * Post method handler for process video uploading
+     * @param file MultipartFile
+     * @return String indicate if upload success. 
+     * @see IOException  or successful message
+     */
     @RequestMapping(value = "/uploader", method = RequestMethod.POST)
     public ResponseEntity < String > singleFileUpload(@RequestParam("file") MultipartFile file)
     throws IOException {
 
+    	try {
         String responseJson = "";
         // Save file on system
         String fileExt=FilenameUtils.getExtension(file.getOriginalFilename());
-        
-        //System.out.println("dd:"+fileExt);
         if(!fileExt.toLowerCase().equals("mp4")) return new ResponseEntity < String > ("Invalid file.", HttpStatus.BAD_REQUEST);
         
         if (!file.getOriginalFilename().isEmpty()) {
@@ -129,21 +137,43 @@ public class vmController {
             return new ResponseEntity < String > ("Invalid file.", HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity < String > (responseJson, HttpStatus.OK);
+    	}
+    	catch(Exception e) {
+    		
+    		return new ResponseEntity < String > ("Invalid file.", HttpStatus.BAD_REQUEST);
+    	}
     }
 
 
-
+    /**
+     * 
+     * @param model data
+     * @return String value mapping with Access_Denied.jsp file in the views
+     * @see access denied page
+     */
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
         return "accessDenied";
     }
 
+    /**
+     * 
+     * @param no parameter
+     * @return String value mapping with login.jsp file in the views
+     * @see login file loads
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
         return "login";
     }
 
+    /**
+     * list view of videos from s3 bucket
+     * @param model data
+     * @return String value mapping with myvideos.jsp file in the views
+     * @see IOException or ParseException or video list page loads
+     */
     @RequestMapping(value = "/myvideos", method = RequestMethod.GET)
     public String getvinfo(ModelMap model) throws IOException, ParseException {
 
@@ -153,9 +183,14 @@ public class vmController {
         model.addAttribute("videos", videos);
         return "myvideos";
     }
-
-
-
+    
+    /**
+     * 
+     * @param request HttpServletRequest
+     * @param response HttpServletResponse
+     * @return String value mapping with login.jsp file in the views
+     * @see successful logout page loads
+     */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -164,7 +199,11 @@ public class vmController {
         }
         return "redirect:/login?logout";
     }
-
+    /**
+     *  retrieve user's name from session
+     * @param no parameter
+     * @return String value of user name
+     */
     private String getPrincipal() {
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -176,7 +215,11 @@ public class vmController {
         }
         return userName;
     }
-
+    /**
+     * init aws s3 client
+     * @param no parameter
+     * @return AwsS3api
+     */
     public AwsS3Api initS3() {
 
         HashMap < String, String > aws = new HashMap < String, String > ();
@@ -191,7 +234,11 @@ public class vmController {
 
         return s3;
     }
-
+    /**
+     *  retrieve user's profile from spring security profile api
+     * @param no parameter
+     * @return UserProfile in List type
+     */
     @ModelAttribute("roles")
     public List < UserProfile > initializeProfiles() {
         return userProfileService.findAll();

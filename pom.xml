@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.vm.app</groupId>
-	<artifactId>videoManager</artifactId>
+	<artifactId>s3-video-uploader</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
-	<name>videoManager</name>
+	<name>s3-video-uploader</name>
 
 	<properties>
 		<springframework.version>4.2.0.RELEASE</springframework.version>
@@ -126,6 +126,6 @@
   		</dependency>
 	</dependencies>
 	<build>
-		<finalName>videoManager</finalName>
+		<finalName>s3-video-uploader</finalName>
 	</build>
 </project>
