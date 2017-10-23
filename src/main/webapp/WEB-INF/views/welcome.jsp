@@ -70,7 +70,7 @@
                <p>2.1 Analysis</p>
                <p>Since it's a web application, Java and Spring framework will be a good answer for it, they have been most used to implement enterprise applications.  
                   This application also requires user authentication, Spring security framework can be used to handle that.  To retrieve users information, we also need database and Java Hiberate framework to work with. I am familiar with Mysql, so I will adopt Mysql database to store users information.</p>
-               <p>For upload video process, there are two approaches, one way is directly post video to s3 bucket, the other will be upload to EC2 server first, after retrieving video information, then move video file to S3 bucket. I will implement second approach in this application.</p>
+               <p>For upload video process, there are two approaches, one way is directly post video to s3 bucket, the other will upload to EC2 server first, after retrieving video information, then move video file to S3 bucket. I will implement second approach in this application.</p>
                <p>There are some good open source tools can be used to retrieve video information, I will use "ffmpeg" and "ffprobe", "ffmpeg" can be used to encode video as well. </p>
                <p>For documentation, we can use javadoc.</p>
                <h3 style="padding-top:20px;">3. technology behind this project</h3>
@@ -82,7 +82,12 @@
                <p>3.3 Front end</p>
                <p>javascript + html + css+ jQuery + videoJS + bootstrap.js + bootstrap freelancer template</p>
                <p>3.4 IDE</p>
-               <p>eclipse 4.7.1</p>
+               <h3 style="padding-top:20px;">4. Testing</h3>
+               <hr>
+               <p>Username and credential will be provided by email. User can conduct login, logout, upload video, list uploaded videos on s3, watch video and retrieve video information after uploading tasks. </p>
+               <h3 style="padding-top:20px;">5. Documentation</h3>
+               <hr>
+               <p><a style="color:#cfe2de;" href="https://mmzh.github.io/s3-video-uploader/">Click here</a> to access app documentation</p>
             </div>
          </div>
       </header>
