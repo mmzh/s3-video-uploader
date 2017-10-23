@@ -1,5 +1,5 @@
 # s3 video uploader
-
+{::nomarkdown}
                <h3 style="padding-top:20px;">1. Objective</h3>
                <br>
                <div>Need an application written in java using Spring Framework, this application should contain following features: </div>
@@ -35,4 +35,4 @@
                <h3 style="padding-top:20px;">4. Documentation</h3>
                <hr>
                <div><a href="https://mmzh.github.io/s3-video-uploader/" target="_BLANK" style="color:#cfe2de;">Click here</a> to access app documentation</div>
-
+{:/}
