@@ -1,0 +1,13 @@
+jdbc.driverClassName = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://<your_link_to_mysql_server>/<your_db_name>
+jdbc.username = <your_db_username>
+jdbc.password = <your_db_password>
+hibernate.dialect = org.hibernate.dialect.MySQLDialect
+hibernate.show_sql = true
+hibernate.format_sql = true
+aws.key = <aws_iam_key>
+aws.secret = <aws_iam_secret>
+aws.region = <aws_s3_bucket_region>
+aws.bucket = <aws_s3_default_bucket_name>
+aws.baseurl = <url_to_s3_bucket>
+aws.localpath = <server_upload_target_path>

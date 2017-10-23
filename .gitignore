@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+# folders
+/target
+
+# files
+src/main/resources/application.properties
