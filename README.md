@@ -1,5 +1,6 @@
-# s3-video-uploader
-
+# s3 video uploader
+```html
+<div>
                <h3 style="padding-top:20px;">1. Objective</h3>
                <hr>
                <p>Need an application written in java using Spring Framework, this application should contain following features: </p>
@@ -35,3 +36,5 @@
                <h3 style="padding-top:20px;">4. Documentation</h3>
                <hr>
                <p><a href="https://mmzh.github.io/s3-video-uploader/" target="_BLANK" style="color:#cfe2de;">Click here</a> to access app documentation</p>
+               </div>
+```
