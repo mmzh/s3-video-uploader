@@ -73,16 +73,19 @@
                <p>For upload video process, there are two approaches, one way is directly post video to s3 bucket, the other will upload to EC2 server first, after retrieving video information, then move video file to S3 bucket. I will implement second approach in this application.</p>
                <p>There are some good open source tools can be used to retrieve video information, I will use "ffmpeg" and "ffprobe", "ffmpeg" can be used to encode video as well. </p>
                <p>For documentation, we can use javadoc.</p>
+			   <p>2.2 AWS solution</p>
+			   <p>AWS provides easy to use, reliable, scalable and flexible web service in different ways. I use AWS EC2 to host this application. AWS S3 service to store uploaded files. RDS for database, Elastic Transcoder for video conversion, create microservice using Lambda to automatically call video conversion task.</p>
+			   
                <h3 style="padding-top:20px;">3. technology behind this project</h3>
                <hr>
-               <p>3.1 AWS solution</p>
-               <p>AWS provides easy to use, reliable, scalable and flexible web service in different ways. I use AWS EC2 to host this application. AWS S3 service to store uploaded files. RDS for database, Elastic Transcoder for video conversion, create microservice using Lambda to automatically call video conversion task.</p>
+               <p>3.1 AWS</p>
+               <p>EC2 + S3 + Lambda + RDS + Elastic Transcoder + IAM + CloudWatch</p>
                <p>3.2 Back end</p>
                <p>Java + Spring + Spring Security + Hiberate + mvn + mysql + ffprobe + aws-sdk-java + MVC</p>
                <p>3.3 Front end</p>
                <p>javascript + html + css+ jQuery + videoJS + bootstrap.js + bootstrap freelancer template</p>
                <p>3.4 IDE</p>
-               <p>eclipse 4.7.1</p>
+			   <p>Eclipse 4.7.1</p>
                <h3 style="padding-top:20px;">4. Testing</h3>
                <hr>
                <p>Username and credential will be provided by email. User can conduct login, logout, upload video, list uploaded videos on s3, watch video and retrieve video information after uploading tasks. </p>
