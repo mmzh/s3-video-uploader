@@ -44,7 +44,7 @@
       </div>
     </nav>
     <section id="portfolio">
-      <div class="success" style="width: 40%; margin: auto;">
+      <div class="success">
         <div>
           <div class="row">
             <div class="col-md-12">
@@ -87,7 +87,8 @@
           <div class="player-box-outer" id="video-info-box"></div>
         </div>
         <div class="col-md-12 text-center video-bucket-hint">
-          <a id="a-video-link" href="" target="_BLANK">Click here</a> to access video on S3 bucket
+          <p><a id="a-video-link" href="" target="_BLANK">Click here</a> to access video on S3 bucket</p>
+          <p>Your hls format of video will be <a id="a-hls-video-link" href="" target="_BLANK">here</a> once it's ready</p>
         </div>
       </div>
     </section>
@@ -97,7 +98,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              By Ming @Nov 2017
+              By Ming @Oct 2017
             </div>
           </div>
         </div>

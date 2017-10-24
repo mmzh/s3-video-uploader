@@ -611,3 +611,11 @@ fieldset[disabled] .btn-success:hover {
     margin-top: 20px;
     font-size: 20px;
 }
+#portfolio .success{
+	width: 50%; margin: auto;
+}
+@media screen and (max-width: 480px) {
+  #mainWrapper{
+	  width:100%;
+  }
+}

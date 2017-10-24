@@ -16,62 +16,126 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * Model layer of User
+ * 
+ * @author ming
+ * @version 1.0.0
+ */
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	/**
+	 * user id
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int u_id;
 
+	/**
+	 * user name
+	 */
 	@NotEmpty
-	@Column(name="u_name", unique=true, nullable=false)
+	@Column(name = "u_name", unique = true, nullable = false)
 	private String u_name;
-	
+
+	/**
+	 * user password
+	 */
 	@NotEmpty
-	@Column(name="u_password", nullable=false)
+	@Column(name = "u_password", nullable = false)
 	private String u_password;
-		
 
-
+	/**
+	 * user profile set
+	 */
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_profile_map", 
-             joinColumns = { @JoinColumn(name = "u_id") }, 
-             inverseJoinColumns = { @JoinColumn(name = "p_id") })
+	@JoinTable(name = "user_profile_map", joinColumns = { @JoinColumn(name = "u_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "p_id") })
 	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
 
+	/**
+	 * get user id
+	 * 
+	 * @return id
+	 */
 	public int getId() {
 		return u_id;
 	}
 
+	/**
+	 * set id
+	 * 
+	 * @param id
+	 *            user id
+	 */
 	public void setId(int id) {
 		this.u_id = id;
 	}
 
+	/**
+	 * get user name
+	 * 
+	 * @return String user name
+	 */
 	public String getUsername() {
 		return u_name;
 	}
 
+	/**
+	 * set user name
+	 * 
+	 * @param username
+	 *            user name
+	 */
 	public void setUsername(String username) {
 		this.u_name = username;
 	}
 
+	/**
+	 * get password
+	 * 
+	 * @return String password
+	 */
 	public String getPassword() {
 		return u_password;
 	}
 
+	/**
+	 * set password
+	 * 
+	 * @param password
+	 *            String
+	 */
 	public void setPassword(String password) {
 		this.u_password = password;
 	}
 
-
+	/**
+	 * get list of user Profiles
+	 * 
+	 * @return UserProfile Set
+	 */
 	public Set<UserProfile> getUserProfiles() {
 		return userProfiles;
 	}
 
+	/**
+	 * set userProfiles
+	 * 
+	 * @param userProfiles
+	 *            user profile object
+	 */
 	public void setUserProfiles(Set<UserProfile> userProfiles) {
 		this.userProfiles = userProfiles;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,6 +145,13 @@ public class User {
 		return result;
 	}
 
+	/**
+	 * over ride Object.equals function
+	 * 
+	 * @param obj
+	 *            Object
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -100,10 +171,15 @@ public class User {
 		return true;
 	}
 
+	/**
+	 * override toString method
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
-		return "User [id=" + u_id + ", username=" + u_name + ", password=" + u_password + ", userProfiles=" + userProfiles +"]";
+		return "User [id=" + u_id + ", username=" + u_name + ", password=" + u_password + ", userProfiles="
+				+ userProfiles + "]";
 	}
 
-	
 }

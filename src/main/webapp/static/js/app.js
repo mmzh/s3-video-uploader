@@ -103,6 +103,7 @@ $(function() {
             $(".success").addClass("hidden");
             $(".player-box").removeClass("hidden");
             $("#a-video-link").attr("href", t.url);
+            $("#a-hls-video-link").attr("href",t.hlsurl);
             generateTab(t.videoinfo);
             loadPlayer(t.url);
             $('#alertMsg').text(msg);

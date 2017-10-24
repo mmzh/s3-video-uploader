@@ -15,36 +15,55 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vm.app.model.User;
 import com.vm.app.model.UserProfile;
 
+/**
+ * custom user detail service layer
+ * 
+ * @author ming
+ * @version 1.0.0
+ */
 @Service("customUserDetailsService")
-public class CustomUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService {
 
+	/**
+	 * userService object
+	 */
 	@Autowired
 	private UserService userService;
-	
-	@Transactional(readOnly=true)
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
-		User user = userService.findBySso(username);
-		System.out.println("User name: "+username);
-		System.out.println("User : "+user);
-		if(user==null){
+
+	/**
+	 * 
+	 * load user by user name
+	 * 
+	 * @param username
+	 *            user name
+	 * @return user details
+	 */
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userService.findByUsername(username);
+		if (user == null) {
 			System.out.println("User not found");
-			throw new UsernameNotFoundException("Username not found"); 
+			throw new UsernameNotFoundException("Username not found");
 		}
-			return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), 
-				 true, true, true, true, getGrantedAuthorities(user));
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), true,
+				true, true, true, getGrantedAuthorities(user));
 	}
 
-	
-	private List<GrantedAuthority> getGrantedAuthorities(User user){
+	/**
+	 * 
+	 * @param user
+	 *            user object
+	 * @return granted user detail
+	 */
+	private List<GrantedAuthority> getGrantedAuthorities(User user) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		
-		for(UserProfile userProfile : user.getUserProfiles()){
-			//System.out.println("UserProfile : "+userProfile);
-			authorities.add(new SimpleGrantedAuthority("ROLE_"+userProfile.getType()));
+
+		for (UserProfile userProfile : user.getUserProfiles()) {
+
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + userProfile.getType()));
 		}
-		//System.out.print("authorities :"+authorities);
+
 		return authorities;
 	}
-	
+
 }

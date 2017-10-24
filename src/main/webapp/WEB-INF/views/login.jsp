@@ -79,7 +79,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              By Ming @Nov 2017
+              By Ming @Oct 2017
             </div>
           </div>
         </div>

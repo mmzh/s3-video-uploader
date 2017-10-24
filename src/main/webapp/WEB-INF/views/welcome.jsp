@@ -82,6 +82,7 @@
                <p>3.3 Front end</p>
                <p>javascript + html + css+ jQuery + videoJS + bootstrap.js + bootstrap freelancer template</p>
                <p>3.4 IDE</p>
+               <p>eclipse 4.7.1</p>
                <h3 style="padding-top:20px;">4. Testing</h3>
                <hr>
                <p>Username and credential will be provided by email. User can conduct login, logout, upload video, list uploaded videos on s3, watch video and retrieve video information after uploading tasks. </p>
@@ -97,7 +98,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-lg-12">
-                     By Ming @Nov 2017
+                     By Ming @Oct 2017
                   </div>
                </div>
             </div>

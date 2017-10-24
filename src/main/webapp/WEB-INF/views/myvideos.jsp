@@ -15,6 +15,11 @@
     <link href="<c:url value='/static/css/font-awesome.min.css' />" rel="stylesheet"></link>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <script>
+    $(document).ready(function(){
+    	$(".hls-link[href='#']").html("Not ready");
+    });
+    </script>
   </head>
   <body>
     <!-- Navigation -->
@@ -49,7 +54,8 @@
               <th class="co1l-md-1">Size</th>
               <th class="co1l-md-1">Last Modified On</th>
               <th class="co1l-md-1">S3 link</th>
-              <th class="co1l-md-5">Detail</th>
+              <th class="co1l-md-1">Hls Format</th>
+              <th class="co1l-md-4">Detail</th>
             </tr>
             <c:forEach var="video" items="${videos}">
               <tr>
@@ -57,6 +63,7 @@
                 <td>${video.size}</td>
                 <td>${video.date}</td>
                 <td><a href="${video.s3url}" target="_BLANK">View Link</a></td>
+                <td><a href="${video.hlsurl}" class="hls-link">View Link</a></td>
                 <td>${video.detail}</td>
               </tr>
             </c:forEach>
@@ -70,7 +77,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              By Ming @Nov 2017
+              By Ming @Oct 2017
             </div>
           </div>
         </div>

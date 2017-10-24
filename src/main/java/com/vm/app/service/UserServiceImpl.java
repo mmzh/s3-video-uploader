@@ -8,28 +8,59 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vm.app.dao.UserDao;
 import com.vm.app.model.User;
 
+/**
+ * Implementation of user service layer
+ * 
+ * @author ming
+ * @version 1.0.0
+ */
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
+	/**
+	 * user dao layer
+	 */
 	@Autowired
 	private UserDao dao;
-	
+
+	/**
+	 * password encoder
+	 */
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	
-	public void save(User user){
+	/**
+	 * save user info
+	 * 
+	 * @param user
+	 *            user object
+	 */
+	public void save(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		dao.save(user);
 	}
-	
+
+	/**
+	 * get user by id
+	 * 
+	 * @param id
+	 *            user id
+	 * @return user object
+	 */
 	public User findById(int id) {
 		return dao.findById(id);
 	}
 
-	public User findBySso(String sso) {
-		return dao.findBySSO(sso);
+	/**
+	 * find user by user name
+	 * 
+	 * @param username
+	 *            user name
+	 * @return user object
+	 */
+	public User findByUsername(String username) {
+		return dao.findByUsername(username);
 	}
-	
+
 }

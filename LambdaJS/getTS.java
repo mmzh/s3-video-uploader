@@ -1,3 +1,9 @@
+/**
+ * <h1>Lambda function to call video conversion after upload</h1>
+ * @author ming
+ * @version 1.0.0
+ * @since Oct,2017
+ */
 'use strict';
 var AWS = require('aws-sdk');
 var s3 = new AWS.S3({

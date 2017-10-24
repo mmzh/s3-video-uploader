@@ -7,32 +7,67 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * user profile model
+ * 
+ * @author ming
+ * @version 1.0.0
+ *
+ */
 @Entity
-@Table(name="profile")
+@Table(name = "profile")
 public class UserProfile {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int p_id;	
+	/**
+	 * profile id
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int p_id;
 
-	@Column(name="p_type", length=15, unique=true, nullable=false)
+	/**
+	 * profile type
+	 */
+	@Column(name = "p_type", length = 15, unique = true, nullable = false)
 	private String p_type = UserProfileType.ADMIN.getUserProfileType();
-	
+
+	/**
+	 * get profile id
+	 * 
+	 * @return int id
+	 */
 	public int getId() {
 		return p_id;
 	}
 
+	/**
+	 * set profile id
+	 * 
+	 * @param id
+	 *            user id
+	 */
 	public void setId(int id) {
 		this.p_id = id;
 	}
 
+	/**
+	 * get profile type
+	 * 
+	 * @return String
+	 */
 	public String getType() {
 		return p_type;
 	}
 
+	/**
+	 * set profile type
+	 * 
+	 * @param type
+	 *            user type
+	 */
 	public void setType(String type) {
 		this.p_type = type;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -64,8 +99,7 @@ public class UserProfile {
 
 	@Override
 	public String toString() {
-		return "UserProfile [id=" + p_id + ",  type=" + p_type	+ "]";
+		return "UserProfile [id=" + p_id + ",  type=" + p_type + "]";
 	}
-	
 
 }
