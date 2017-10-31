@@ -126,22 +126,36 @@ public class vmController {
 				outputStream.close();
 
 				ffmpegApi ff = new ffmpegApi();
+
 				ArrayList<String> vinfo = ff.getVideoFileInfo(awsLocalpath + uniFileName);
 				StringBuilder st = new StringBuilder();
-				for (String s : vinfo)
+
+				for (String s : vinfo) {
+
+					if (s.indexOf("Duration=") > -1) {
+
+						int duration = Integer.parseInt(s.replace("Duration=", "").replace("s", ""));
+						if (duration > 600)
+							return new ResponseEntity<String>("File too long.", HttpStatus.BAD_REQUEST);
+
+					}
 					st.append(s + "||");
+
+				}
+
 				AwsS3Api s3 = initS3();
 				String url = s3.putfile(uniFileName, new String(st), file.getOriginalFilename());
 				String hlsurl = s3.getHlsUrl(uniFileName);
 				String videoinfo = new String(st);
 				responseJson = "{\"url\":\"" + url + "\",\"hlsurl\":\"" + hlsurl + "\",\"videoinfo\":\"" + videoinfo
 						+ "\"}";
+
 			} else {
 				return new ResponseEntity<String>("Invalid file.", HttpStatus.BAD_REQUEST);
 			}
 			return new ResponseEntity<String>(responseJson, HttpStatus.OK);
 		} catch (Exception e) {
-
+			System.out.println(e);
 			return new ResponseEntity<String>("Invalid file.", HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -151,7 +165,7 @@ public class vmController {
 	 * @param model
 	 *            model data
 	 * @return String value mapping with Access_Denied.jsp file in the views
-	 * @see access denied page
+	 * @see access denied page 
 	 */
 	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
 	public String accessDeniedPage(ModelMap model) {

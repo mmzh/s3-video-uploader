@@ -11,11 +11,14 @@ import java.util.ArrayList;
  * @since 2017-10-21
  */
 public class ffmpegApi {
+	
+	private String ffprobePath;
 
 	public ArrayList<String> infos;
 
 	public ffmpegApi() {
 		infos = new ArrayList<String>();
+		this.ffprobePath="J:/uploaded/ffprobe.exe";
 	}
 
 	/**
@@ -28,7 +31,7 @@ public class ffmpegApi {
 	 * @see IOException        
 	 */
 	public ArrayList<String> getVideoFileInfo(String vPath) throws IOException {
-		Process p = Runtime.getRuntime().exec("J:/uploaded/ffprobe.exe -show_streams \"" + vPath + "\"");
+		Process p = Runtime.getRuntime().exec(this.ffprobePath + " -show_streams \"" + vPath + "\"");
 		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		String s = "";
 		boolean durationFlag = false;
@@ -56,7 +59,7 @@ public class ffmpegApi {
 			}
 		}
 
-		return infos;
+		return infos; 
 	}
 
 	/**

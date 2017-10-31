@@ -16,7 +16,7 @@ window.URL = window.URL || window.webkitURL;
 function setFileInfo(files) {
     var submit = document.getElementById('submit-button');
     v = files[0];
-
+    document.getElementById('alertMsg').innerHTML='';
     if (getExtension(v.name) != "mp4") {
         document.getElementById("file").value = "";
         document.getElementById("file-fmt-warning").style.display = "inline";
@@ -41,6 +41,7 @@ function updateVinfo() {
     document.querySelector('#vinfo').innerHTML = "";
     document.querySelector('#vinfo').innerHTML += "<div><p>video name: <b>" + v.name + "</b>  duration: <b>" + fmtMSS(Math.round(v.duration)) + '</b> file size: <b>' + fmtSize(v.size) + '</b></p></div>';
     if ((v.duration / 60) > 10 || v.size > 25500000) {
+    	document.getElementById("file").value = "";
         submit.disabled = true;
         document.getElementById("alert").style.display = "block";
     } else {
@@ -111,11 +112,16 @@ $(function() {
             $('button[type=submit]').prop('disabled', false);
         });
 
-        // Called on failure of file upload
+        // Called on failure of file upload 
         ajaxReq.fail(function(jqXHR) {
+        	 $('input[type=file]').val('');
+        	 $('button[type=submit]').prop('disabled', true);
+             $('.progress').addClass("hidden");
+             $('#progressBar').text('');
+             $('#progressBar').css('width', '0%');
             $('#alertMsg').text(jqXHR.responseText + '(' + jqXHR.status +
                 ' - ' + jqXHR.statusText + ')');
-            $('button[type=submit]').prop('disabled', false);
+            
         });
     });
 });
